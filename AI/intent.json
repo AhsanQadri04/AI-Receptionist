@@ -1,0 +1,181 @@
+{
+  "intents": [
+    {
+        "tag": "greeting",
+        "patterns": [
+          "hi",
+          "hello",
+          "good morning",
+          "good afternoon",
+          "good evening",
+          "assalamu alaikum",
+          "peace be upon you",
+          "greetings",
+          "hello, how can I be assisted?",
+          "hello, may I seek assistance?",
+          "good day",
+          "hello, I need help",
+          "hello, is someone there?",
+          "as-salamu alaykum wa rahmatullahi wa barakatuh",
+          "salaam",
+          "hello, may I ask for help?",
+          "hello, may I request assistance?",
+          "may peace be upon you",
+          "as-salamu alaykum wa rahmatullahi",
+          "good morning, how can I get help?",
+          "good evening, may I seek assistance?",
+          "peace be upon you, how can you assist?",
+          "as-salamu alaykum, I need assistance",
+          "assalamu alaikum wa barakatuh"
+        ],
+        "responses": [
+          "Hello! How can I assist you today?",
+          "Welcome! How may I help you?",
+          "Good day! How can I be of service?",
+          "Wa alaykumu as-salam! How can I help you today?",
+          "Greetings! What assistance do you require?",
+          "Peace be upon you! Please let me know how I can help.",
+          "Welcome! How may I serve you today?",
+          "Good morning! How can I assist you?",
+          "Good afternoon! Let me know how I can help.",
+          "Wa alaykumu as-salam wa rahmatullahi wa barakatuh! How may I help?",
+          "Good evening! How can I support you?",
+          "I’m here to assist. How can I help you today?",
+          "Welcome! Please let me know how I can serve you.",
+          "Peace be upon you! How can I assist you in the best way?",
+          "Hello! Let me know what assistance you require.",
+          "Wa alaikumussalam! I’m here to help—what do you need?",
+          "Please let me know how I may assist."
+        ]
+      },
+    {
+      "tag": "appointment",
+      "patterns": [
+        "schedule a meeting",
+        "book an appointment",
+        "set up a call",
+        "need to meet",
+        "arrange a visit"
+      ],
+      "responses": [
+        "Sure! What time works for you?",
+        "I can help with that. When would you like to book?",
+        "Please let me know your preferred time."
+      ]
+    },
+    {
+      "tag": "services",
+      "patterns": [
+        "what services do you offer?",
+        "what does this company do?",
+        "tell me about your services",
+        "what do you provide?"
+      ],
+      "responses": [
+        "We specialize in office management, client support, and workspace solutions.",
+        "Our services include reception management, meeting coordination, and administrative support."
+      ]
+    },
+    {
+      "tag": "office_hours",
+      "patterns": [
+        "when are you open?",
+        "what are your hours?",
+        "are you open now?",
+        "opening times"
+      ],
+      "responses": [
+        "Our office is open Monday to Friday, 9 AM to 5 PM.",
+        "We operate from 9 AM to 5 PM on weekdays."
+      ]
+    },
+    {
+      "tag": "contact_info",
+      "patterns": [
+        "how to contact you?",
+        "what's your phone number?",
+        "email address",
+        "where is the office?"
+      ],
+      "responses": [
+        "You can reach us at (555) 123-4567 or office@company.com.",
+        "Our phone number is (555) 123-4567, and we're located at 123 Main Street."
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "bye",
+        "goodbye",
+        "see you later",
+        "thanks, bye"
+      ],
+      "responses": [
+        "Goodbye! Have a great day.",
+        "See you later! Feel free to reach out again."
+      ]
+    },
+    {
+      "tag": "office_location",
+      "patterns": [
+        "Where is the HR department?",
+        "Which floor is IT on?",
+        "Where can I find the finance office?"
+      ],
+      "responses": [
+        "The HR department is on the 3rd floor.",
+        "The IT department is on the 5th floor.",
+        "The finance office is located on the 4th floor."
+      ]
+    },
+    {
+      "tag": "faq_hours",
+      "patterns": [
+        "What are your working hours?",
+        "When are you open?",
+        "What time does the office close?"
+      ],
+      "responses": [
+        "Our office hours are 9 AM to 6 PM, Monday to Friday."
+      ]
+    },
+    {
+      "tag": "meeting_schedule",
+      "patterns": [
+        "When is my next meeting?",
+        "What time is the board meeting?",
+        "Do I have any meetings scheduled?"
+      ],
+      "responses": [
+        "You have a meeting scheduled at 10 AM in Conference Room A.",
+        "The board meeting is at 3 PM in the Main Hall.",
+        "No meetings are scheduled for today."
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "Thanks",
+        "Thank you",
+        "That's helpful"
+      ],
+      "responses": [
+        "You're welcome!",
+        "Happy to help!",
+        "No problem!"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Bye",
+        "Goodbye",
+        "See you later"
+      ],
+      "responses": [
+        "Goodbye! Have a great day!",
+        "See you later!"
+      ]
+    }
+  ]
+}

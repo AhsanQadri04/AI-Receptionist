@@ -1,0 +1,466 @@
+[
+    {
+        "question": "What are your office hours?",
+        "answer": "Our office hours are from 9 AM to 5 PM, Monday to Friday."
+    },
+    {
+        "question": "How can I book an appointment?",
+        "answer": "To book an appointment, you can call our office at 123-456-7890 or visit our website."
+    },
+    {
+        "question": "What\u00e2\u20ac\u2122s the best way to contact customer support?",
+        "answer": "You can contact customer support via email at support@company.com or through our live chat on the website."
+    },
+    {
+        "question": "Are you open on weekends?",
+        "answer": "We are closed on weekends, but you can reach us on Monday during office hours."
+    },
+    {
+        "question": "Can I cancel my appointment?",
+        "answer": "Yes, you can cancel your appointment by calling the office or emailing us at cancellations@company.com."
+    },
+    {
+        "question": "Do you offer remote consultations?",
+        "answer": "Yes, we do offer remote consultations via video calls. Please let us know if you would like to schedule one."
+    },
+    {
+        "question": "Where are you located?",
+        "answer": "We are located at 123 Main Street, Cityville. You can also find directions on our website."
+    },
+    {
+        "question": "Is parking available at your location?",
+        "answer": "Yes, we have a parking lot available for visitors at no additional cost."
+    },
+    {
+        "question": "How can I reschedule my appointment?",
+        "answer": "To reschedule your appointment, please call us at 123-456-7890 or email reschedule@company.com."
+    },
+    {
+        "question": "Do you have facilities for differently-abled visitors?",
+        "answer": "Yes, our building is equipped with wheelchair ramps, elevators, and accessible restrooms."
+    },
+    {
+        "question": "Can I get a visitor's pass?",
+        "answer": "Yes, visitor's passes are issued at the front desk. Please bring a valid ID."
+    },
+    {
+        "question": "What documents do I need to bring for my appointment?",
+        "answer": "Please bring a valid ID and any relevant paperwork related to your appointment."
+    },
+    {
+        "question": "Do you accept walk-in appointments?",
+        "answer": "We accept walk-ins based on availability, but we recommend scheduling an appointment to guarantee a slot."
+    },
+    {
+        "question": "What is your refund policy for cancellations?",
+        "answer": "Cancellations made 24 hours in advance are eligible for a full refund. Please contact us for assistance."
+    },
+    {
+        "question": "Do you offer discounts for group bookings?",
+        "answer": "Yes, we offer discounts for group bookings. Please contact us for details."
+    },
+    {
+        "question": "Can I pay using a credit card?",
+        "answer": "Yes, we accept all major credit cards for payments."
+    },
+    {
+        "question": "What is the best way to reach your office by public transport?",
+        "answer": "The nearest bus stop is a 5-minute walk from our office. You can also use the subway and get off at Cityville Station."
+    },
+    {
+        "question": "Can I bring a guest to my appointment?",
+        "answer": "Yes, you can bring a guest. Please inform us in advance if you plan to do so."
+    },
+    {
+        "question": "Do you provide language assistance for non-English speakers?",
+        "answer": "Yes, we provide language assistance for Spanish, French, and Mandarin speakers."
+    },
+    {
+        "question": "Are refreshments available during meetings?",
+        "answer": "Yes, complimentary water, tea, and coffee are provided in the meeting rooms."
+    },
+    {
+        "question": "What is your policy on pets in the office?",
+        "answer": "Pets are not allowed in the office, except for certified service animals."
+    },
+    {
+        "question": "Do you have a lost and found department?",
+        "answer": "Yes, we maintain a lost and found department at the front desk. Please inquire if you've misplaced something."
+    },
+    {
+        "question": "What are the guidelines for visitors?",
+        "answer": "All visitors are required to sign in at the front desk and present a valid ID."
+    },
+    {
+        "question": "Can I book a meeting room for private use?",
+        "answer": "Yes, meeting rooms can be booked for private use. Please contact us for availability and fees."
+    },
+    {
+        "question": "Is there a dress code for visitors?",
+        "answer": "There is no specific dress code, but business casual attire is recommended."
+    },
+    {
+        "question": "What are your security protocols for visitors?",
+        "answer": "Visitors are required to sign in and wear a visitor badge at all times while inside the building."
+    },
+    {
+        "question": "Can I use the office Wi-Fi during my visit?",
+        "answer": "Yes, visitors can use the office Wi-Fi. The password will be provided at the front desk upon request."
+    },
+    {
+        "question": "Do you provide free notepads and pens for meetings?",
+        "answer": "Yes, complimentary notepads and pens are provided in all meeting rooms."
+    },
+    {
+        "question": "Is there a cafeteria in the building?",
+        "answer": "Yes, the cafeteria is located on the first floor and is open to all visitors."
+    },
+    {
+        "question": "What payment methods do you accept for services?",
+        "answer": "We accept cash, credit cards, and mobile payment apps like PayPal and Venmo."
+    },
+    {
+        "question": "How do I check the status of my appointment?",
+        "answer": "You can check your appointment status by calling us or logging into your account on our website."
+    },
+    {
+        "question": "Are there vending machines in the building?",
+        "answer": "Yes, vending machines are available on every floor near the elevators."
+    },
+    {
+        "question": "Do you have an elevator in the building?",
+        "answer": "Yes, we have elevators available for visitors and employees."
+    },
+    {
+        "question": "Is there wheelchair access to the building?",
+        "answer": "Yes, our building is wheelchair accessible, and we have ramps and elevators for convenience."
+    },
+    {
+        "question": "Can I reschedule my appointment?",
+        "answer": "Yes, you can reschedule your appointment by contacting the front desk or through our online portal."
+    },
+    {
+        "question": "What is the procedure for lost and found items?",
+        "answer": "Lost and found items are stored at the front desk. You can inquire during office hours."
+    },
+    {
+        "question": "Are visitors allowed to take photos inside the building?",
+        "answer": "Visitors are not allowed to take photos inside the building without prior permission."
+    },
+    {
+        "question": "Can I bring a guest to my appointment?",
+        "answer": "Yes, you may bring one guest to your appointment. Please inform the front desk in advance."
+    },
+    {
+        "question": "Is there a policy for pets in the building?",
+        "answer": "Pets are not allowed inside the building, except for service animals."
+    },
+    {
+        "question": "Do you have a first aid kit available?",
+        "answer": "Yes, we have a first aid kit available at the front desk for emergencies."
+    },
+    {
+        "question": "Can I charge my phone or laptop while visiting?",
+        "answer": "Yes, charging stations are available in the lobby and meeting rooms."
+    },
+    {
+        "question": "Are there restrooms available for visitors?",
+        "answer": "Yes, restrooms are available on each floor for visitors."
+    },
+    {
+        "question": "Can I request a printed map of the building?",
+        "answer": "Yes, printed maps of the building are available at the front desk."
+    },
+    {
+        "question": "Do you provide lockers for visitors?",
+        "answer": "No, we do not provide lockers for visitors. Please keep your belongings with you."
+    },
+    {
+        "question": "Is there a lost and found department?",
+        "answer": "Yes, the front desk manages the lost and found department. You can inquire here."
+    },
+    {
+        "question": "How can I cancel my subscription to your services?",
+        "answer": "You can cancel your subscription by contacting our support team or through your online account settings."
+    },
+    {
+        "question": "Do you have a suggestion box?",
+        "answer": "Yes, we have a suggestion box near the reception area. You\u00e2\u20ac\u2122re welcome to leave your feedback."
+    },
+    {
+        "question": "What is your refund policy?",
+        "answer": "Refunds are provided according to our company policy. Please check our website or contact support for details."
+    },
+    {
+        "question": "Can I get a printed receipt for my payment?",
+        "answer": "Yes, printed receipts are available upon request at the front desk."
+    },
+    {
+        "question": "Is parking available for bicycles?",
+        "answer": "Yes, we have a dedicated parking area for bicycles near the main entrance."
+    },
+    {
+        "question": "Can I use the lounge area while waiting?",
+        "answer": "Yes, visitors are welcome to use the lounge area while waiting."
+    },
+    {
+        "question": "Do you provide coffee or refreshments for visitors?",
+        "answer": "Yes, complimentary coffee and water are available in the lounge area."
+    },
+    {
+        "question": "How do I find the office of [Company Name] within the park?",
+        "answer": "You can use the digital directory kiosk in the lobby or check the technology park’s mobile app for real-time maps and directions to [Company Name]. The front desk can also provide a printed directory."
+    },
+    {
+        "question": "Are there shared conference rooms available for inter-company meetings?",
+        "answer": "Yes, shared conference rooms are available on floors 3 and 5. You can reserve them via the technology park’s booking portal or inquire at the front desk for availability."
+    },
+    {
+        "question": "How do I reserve a shared workspace or collaboration area?",
+        "answer": "Shared workspaces can be reserved through the technology park’s online platform or by contacting the facilities management team. Hourly and daily rates may apply."
+    },
+    {
+        "question": "Is there a directory of all companies located in the technology park?",
+        "answer": "Yes, a full directory is available on the technology park’s website, mobile app, and at the lobby’s digital kiosk. Physical copies are also available at the front desk."
+    },
+    {
+        "question": "Where can I find charging stations for electric vehicles in the parking lot?",
+        "answer": "EV charging stations are located in Section B of the parking garage. Payment can be made via the park’s app or at the kiosk near the garage entrance."
+    },
+    {
+        "question": "How do I report a maintenance issue in a common area (e.g., hallway, restroom)?",
+        "answer": "Report maintenance issues using the ‘Facility Help’ feature on the park’s app, or notify the front desk. Emergency issues can be reported via the intercom system."
+    },
+    {
+        "question": "Are there designated quiet zones or focus areas in the building?",
+        "answer": "Yes, quiet zones are located on the 2nd and 4th floors. These areas are marked with signage and are reserved for focused work or calls."
+    },
+    {
+        "question": "Can I access a printer or scanner as a visitor or employee from another company?",
+        "answer": "Shared printers and scanners are available in the business lounge on the 1st floor. Usage requires a temporary access code, which can be obtained at the front desk."
+    },
+    {
+        "question": "Where is the nearest shared cafeteria or coffee shop open to all companies?",
+        "answer": "The shared cafeteria ‘TechBrew’ is on the ground floor, open from 7 AM to 7 PM. Vending machines with snacks and drinks are also available on every floor."
+    },
+    {
+        "question": "How do I request a temporary access badge for a different company’s floor?",
+        "answer": "Temporary access badges must be requested by the host company’s admin. Once approved, collect the badge at the front desk with a valid ID."
+    },
+    {
+        "question": "Are there after-hours access protocols for employees working late?",
+        "answer": "After-hours access requires prior authorization from your company’s admin. Use your company-issued badge to enter, and notify security via the intercom if needed."
+    },
+    {
+        "question": "How can I find contact information for a specific employee from another company?",
+        "answer": "Contact details for employees are managed by their respective companies. Please inquire with the front desk, and they will direct you to the appropriate company’s reception."
+    },
+    {
+        "question": "Is there a map of the technology park showing all company locations?",
+        "answer": "Yes, interactive maps are available on the park’s app and website. Printed maps are also provided at the front desk or lobby kiosk."
+    },
+    {
+        "question": "Do you offer tech support for shared equipment (e.g., projectors, Wi-Fi)?",
+        "answer": "Yes, the technology park’s IT team assists with shared equipment. Dial extension 5555 from any lobby phone or use the app’s ‘Tech Support’ chat feature."
+    },
+    {
+        "question": "Where can I dispose of electronic waste (e-waste) in the building?",
+        "answer": "E-waste bins are located in the loading dock area (Level -1). Follow signage for proper disposal guidelines. Hazardous materials require special handling—contact the front desk."
+    },
+    {
+        "question": "Are there EV charging stations available, and how do I use them?",
+        "answer": "EV charging stations are in Parking Section B. Activate them via the park’s app or pay at the kiosk. Rates are $0.20 per kWh."
+    },
+    {
+        "question": "How do I book the rooftop terrace or outdoor meeting space for an event?",
+        "answer": "The rooftop terrace can be booked through the facilities management team. Submit a request via the park’s portal at least 72 hours in advance."
+    },
+    {
+        "question": "What security measures are in place for accessing restricted company floors?",
+        "answer": "Restricted floors require company-specific access badges. Security personnel patrol 24/7, and CCTV surveillance is active in all common areas."
+    },
+    {
+        "question": "Can I host a cross-company event or workshop in the shared auditorium?",
+        "answer": "Yes, the shared auditorium seats 200 and can be reserved via the facilities portal. Fees vary based on duration and amenities required."
+    },
+    {
+        "question": "Is there a shuttle service between the technology park and public transit hubs?",
+        "answer": "A complimentary shuttle runs hourly between the park and Cityville Station from 6 AM to 9 PM. Schedules are posted at the lobby and on the park’s app."
+    },
+    {
+        "question": "What are your office hours?",
+        "answer": "Our office hours are from 9 AM to 5 PM, Monday to Friday."
+    },
+    {
+        "question": "When are your offices open?",
+        "answer": "Our office hours are from 9 AM to 5 PM, Monday to Friday."
+    },
+    {
+        "question": "What times is the office operational?",
+        "answer": "Our office hours are from 9 AM to 5 PM, Monday to Friday."
+    },
+    {
+        "question": "Can you share your opening and closing times?",
+        "answer": "Our office hours are from 9 AM to 5 PM, Monday to Friday."
+    },
+    {
+        "question": "How can I book an appointment?",
+        "answer": "To book an appointment, you can call our office at 123-456-7890 or visit our website."
+    },
+    {
+        "question": "What’s the process for scheduling an appointment?",
+        "answer": "To book an appointment, you can call our office at 123-456-7890 or visit our website."
+    },
+    {
+        "question": "How do I reserve a time slot?",
+        "answer": "To book an appointment, you can call our office at 123-456-7890 or visit our website."
+    },
+    {
+        "question": "Can I set up an appointment online?",
+        "answer": "To book an appointment, you can call our office at 123-456-7890 or visit our website."
+    },
+    {
+        "question": "What's the best way to contact customer support?",
+        "answer": "You can contact customer support via email at support@company.com or through our live chat on the website."
+    },
+    {
+        "question": "How do I reach customer service?",
+        "answer": "You can contact customer support via email at support@company.com or through our live chat on the website."
+    },
+    {
+        "question": "What options exist for getting support?",
+        "answer": "You can contact customer support via email at support@company.com or through our live chat on the website."
+    },
+    {
+        "question": "How can I get help from customer support?",
+        "answer": "You can contact customer support via email at support@company.com or through our live chat on the website."
+    },
+    {
+        "question": "Are you open on weekends?",
+        "answer": "We are closed on weekends, but you can reach us on Monday during office hours."
+    },
+    {
+        "question": "Do you operate on Saturdays or Sundays?",
+        "answer": "We are closed on weekends, but you can reach us on Monday during office hours."
+    },
+    {
+        "question": "Is the office accessible during the weekend?",
+        "answer": "We are closed on weekends, but you can reach us on Monday during office hours."
+    },
+    {
+        "question": "Can I visit on weekends?",
+        "answer": "We are closed on weekends, but you can reach us on Monday during office hours."
+    },
+    {
+        "question": "Can I cancel my appointment?",
+        "answer": "Yes, you can cancel your appointment by calling the office or emailing us at cancellations@company.com."
+    },
+    {
+        "question": "Is it possible to cancel a scheduled appointment?",
+        "answer": "Yes, you can cancel your appointment by calling the office or emailing us at cancellations@company.com."
+    },
+    {
+        "question": "How do I cancel a booking?",
+        "answer": "Yes, you can cancel your appointment by calling the office or emailing us at cancellations@company.com."
+    },
+    {
+        "question": "What’s the procedure for appointment cancellation?",
+        "answer": "Yes, you can cancel your appointment by calling the office or emailing us at cancellations@company.com."
+    },
+    {
+        "question": "Where is the office for [Company Name] located?",
+        "answer": "The office for [Company Name] is on Floor 7, Suite 702. Check the digital directory in the lobby for precise directions."
+    },
+    {
+        "question": "How do I get to [Company Name]'s office in the park?",
+        "answer": "The office for [Company Name] is on Floor 7, Suite 702. Check the digital directory in the lobby for precise directions."
+    },
+    {
+        "question": "Can you direct me to [Company Name]'s workspace?",
+        "answer": "The office for [Company Name] is on Floor 7, Suite 702. Check the digital directory in the lobby for precise directions."
+    },
+    {
+        "question": "Which floor is [Company Name] situated on?",
+        "answer": "The office for [Company Name] is on Floor 7, Suite 702. Check the digital directory in the lobby for precise directions."
+    },
+    {
+        "question": "I’m here for a client meeting. Where should I head?",
+        "answer": "Client meetings are held in the Sky Lounge on Floor 10. Proceed to the front desk for a visitor badge and directions."
+    },
+    {
+        "question": "Where do I go for a job interview?",
+        "answer": "Job interviews are conducted in the HR Wing on Floor 3. Check in at the reception counter upon arrival."
+    },
+    {
+        "question": "I need to deliver a package. Which area is for deliveries?",
+        "answer": "Deliveries are accepted at the Loading Dock (Level -1). Follow the signs near the east elevators."
+    },
+    {
+        "question": "I’m here for a repair service. Where’s the service desk?",
+        "answer": "The maintenance and repair desk is located in the Facilities Office on Floor 1, Room 105."
+    },
+    {
+        "question": "Where is the nearest restroom?",
+        "answer": "Restrooms are located on every floor, adjacent to the elevators. Check floor maps for exact locations."
+    },
+    {
+        "question": "How do I find the cafeteria?",
+        "answer": "The shared cafeteria ‘TechBites’ is on the ground floor, next to the main lobby. Follow the green signage."
+    },
+    {
+        "question": "Is there a coffee shop nearby?",
+        "answer": "Yes, the ‘CafeHub’ is on Floor 2, near the atrium. It’s open from 7 AM to 6 PM daily."
+    },
+    {
+        "question": "Where can I find a quiet place to work temporarily?",
+        "answer": "Shared focus pods are available on Floors 2 and 4. Use the park’s app to check availability."
+    },
+    {
+        "question": "Where is [Employee Name]’s office located?",
+        "answer": "[Employee Name] works in [Company Name]’s office on Floor 7. Use the lobby directory or app to locate their suite."
+    },
+    {
+        "question": "How do I find the office of John Doe from TechCorp?",
+        "answer": "John Doe’s office is in TechCorp’s workspace on Floor 5, Room 512. The front desk can escort you if needed."
+    },
+    {
+        "question": "Can you help me locate the HR department for Innovate Labs?",
+        "answer": "Innovate Labs’ HR department is on Floor 3, Room 305. Follow the blue hallway markers from the central elevators."
+    },
+    {
+        "question": "Where does the CEO of AlphaTech sit?",
+        "answer": "The AlphaTech CEO’s office is in the Executive Wing on Floor 12. Access requires prior authorization."
+    },
+    {
+        "question": "Mr. Smith is meeting Ms. Lee today. Where should they gather?",
+        "answer": "Shared meeting rooms are on Floor 6. Reserve a room via the park’s app or check with the front desk for availability."
+    },
+    {
+        "question": "A team from BetaSoft is visiting Gamma Labs. Where do I direct them?",
+        "answer": "Gamma Labs’ guest meeting area is on Floor 8, Room 820. Escorts can be arranged at the security desk."
+    },
+    {
+        "question": "Where should external partners wait for their host?",
+        "answer": "External guests may wait in the Visitor Lounge on Floor 1. Notify your host via the intercom system upon arrival."
+    },
+    {
+        "question": "A group from DesignCo is here for a workshop. Where’s the setup?",
+        "answer": "Workshops are hosted in the Collaboration Hub on Floor 9. Confirm room booking details with the facilities team."
+    },
+    {
+        "question": "I lost my phone. Where’s the lost and found?",
+        "answer": "The Lost and Found department is at the front desk. Describe the item, and staff will assist you."
+    },
+    {
+        "question": "Did anyone turn in a black laptop bag?",
+        "answer": "Check with the Lost and Found department at the front desk. Provide a description for verification."
+    },
+    {
+        "question": "How do I report a lost wallet?",
+        "answer": "Report lost items immediately to the front desk. Include details like color, brand, and contents for faster recovery."
+    },
+    {
+        "question": "Where can I retrieve a misplaced item?",
+        "answer": "All misplaced items are stored at the Lost and Found desk in the lobby. Visit during office hours for assistance."
+    }
+]
