@@ -7,7 +7,6 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from fuzzywuzzy import fuzz
 
-# Download necessary NLTK data
 nltk.download('punkt')
 nltk.download('stopwords')
 
@@ -18,34 +17,13 @@ class Chatbot:
         self.data = self.load_intents()
         self.context = self.load_context()
         self.stop_words = set(stopwords.words('english'))
-
-        # Predefined meeting schedules
-        self.meetings = {
-            "board meeting": "3 PM in the Main Hall",
-            "client meeting": "2 PM in Conference Room B"
-        }
-
-        # Time-based greeting
-        self.time_greetings = {
-            "morning": (5, 12),
-            "afternoon": (12, 17),
-            "evening": (17, 21)
-        }
-
-        # Specific fallback responses
-        self.specific_responses = {
-            "who are you?": "I am your Receptionist Bot, here to assist you!",
-            "tell me a joke": "Why don't scientists trust atoms? Because they make up everything!",
-            "how are you?": "I'm just a bot, but I'm here to help you!",
-            "asalamualikum": "Walikum Asalam! How can I assist you today?"
-        }
+        self.time_greetings = {"morning": (5, 12), "afternoon": (12, 17), "evening": (17, 21)}
 
     def load_intents(self):
         try:
             with open(self.intent_file) as file:
                 return json.load(file)
-        except (FileNotFoundError, json.JSONDecodeError) as e:
-            print(f"Error loading intents: {e}")
+        except (FileNotFoundError, json.JSONDecodeError):
             return {"intents": []}
 
     def load_context(self):
@@ -72,14 +50,12 @@ class Chatbot:
     def get_intent(self, user_input, threshold=70):
         max_score = 0
         matched_intent = None
-        
         for intent in self.data['intents']:
             for pattern in intent['patterns']:
                 score = fuzz.partial_ratio(user_input.lower(), pattern.lower())
                 if score > max_score:
                     max_score = score
                     matched_intent = intent
-        
         return matched_intent if max_score > threshold else None
 
     def handle_meeting_schedule(self, query):
@@ -90,26 +66,17 @@ class Chatbot:
 
     def get_response(self, user_input):
         user_input = user_input.strip().lower()
-        
         if not user_input:
             return "I'm sorry, I didn't catch that. Could you say it again?"
-
-        if user_input in self.specific_responses:
-            return self.specific_responses[user_input]
-
         intent = self.get_intent(user_input)
         if intent:
             if intent['tag'] == 'meeting_schedule':
                 return self.handle_meeting_schedule(user_input)
-            
             if 'context' in intent:
                 self.context['last_intent'] = intent['tag']
                 self.context['previous_query'] = user_input
-
             if intent['tag'] == 'greeting':
                 time_part = self.get_time_based_greeting()
                 return random.choice(intent['responses']).replace("[morning/afternoon/evening]", time_part)
-            
             return random.choice(intent['responses'])
-        
         return "I'm sorry, I didn't understand. Could you rephrase?"
