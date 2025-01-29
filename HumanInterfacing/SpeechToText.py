@@ -24,22 +24,33 @@ class SpeechToText(QThread):
         try:
             with sr.Microphone() as source:
                 print("Microphone opened. Listening for audio...")
-                while self.active:  # Ensure loop runs only when active
+                while self.active:
                     try:
                         audio = self.recognizer.listen(source, timeout=5)
                         print("Audio captured. Sending to recognizer...")
-                        recognized_text = self.recognizer.recognize_google(audio)
-                        print(f"Recognized text: {recognized_text}")
-                        
-                        # Get response from ChatbotModel
-                        response = self.chatbot.get_response(recognized_text)
+
+                        recognized_text = ""
+                        detected_lang = "en"
+
+                        try:
+                            recognized_text = self.recognizer.recognize_google(audio, language="en")
+                        except sr.UnknownValueError:
+                            try:
+                                recognized_text = self.recognizer.recognize_google(audio, language="ur")
+                                detected_lang = "ur"
+                            except sr.UnknownValueError:
+                                print("Speech Recognition could not understand the audio.")
+                                continue
+
+                        print(f"Recognized text ({detected_lang}): {recognized_text}")
+                        response = self.chatbot.get_response(recognized_text)  # FIXED: Only passing user_input
                         print(f"Chatbot Response: {response}")
-                        
+
                         self.text_signal.emit(response)
-                    except sr.UnknownValueError:
-                        print("Speech Recognition could not understand the audio.")
+
                     except sr.RequestError as e:
                         print(f"Speech Recognition API error: {e}")
+
         except Exception as e:
             print(f"Unexpected error: {e}")
         finally:

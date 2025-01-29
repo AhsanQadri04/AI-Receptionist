@@ -1,0 +1,22 @@
+{
+    "logs": [
+        {
+            "username": "Ahsan",
+            "timestamp": "2025-01-29 14:08:04",
+            "question": "good afternoon",
+            "answer": "Welcome! How may I help you?"
+        },
+        {
+            "username": "Ahsan",
+            "timestamp": "2025-01-29 14:08:15",
+            "question": "what is the hr",
+            "answer": "The HR office is located on the 3rd floor."
+        },
+        {
+            "username": "Ahsan",
+            "timestamp": "2025-01-29 14:08:24",
+            "question": "ok thank you",
+            "answer": "Happy to help!"
+        }
+    ]
+}

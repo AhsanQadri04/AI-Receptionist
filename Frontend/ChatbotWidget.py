@@ -1,5 +1,4 @@
 from PyQt6.QtWidgets import *
-from PyQt6.QtCore import Qt
 from HumanInterfacing.SpeechToText import SpeechToText
 from HumanInterfacing.TextToSpeech import TTSThread
 from AI.ChatbotModel import Chatbot 
@@ -52,19 +51,26 @@ class ChatbotWidget(QWidget):
         except FileNotFoundError:
             print("Warning: 'styles.qss' file not found.")
 
+
     def handle_user_input(self):
         user_message = self.user_input.text().strip()
         if not user_message:
             return
 
-        self.chat_display.append(f"User: {user_message}")
+        # Get the user's name (default to "Anonymous")
+        user_name = self.get_username()
+
+        self.chat_display.append(f"{user_name}: {user_message}")
         self.user_input.clear()
 
-        # Get response from Chatbot ✅ Using new chatbot logic
-        response = self.chatbot.get_response(user_message)
+        response = self.chatbot.get_response(user_message, user_name)
         self.chat_display.append(f"AI Receptionist: {response}")
 
         self.speak(response)
+
+    def get_username(self):
+        user_name, ok = QInputDialog.getText(self, "Username", "Enter your name (optional):")
+        return user_name.strip() if ok and user_name else "Anonymous"
 
     def handle_chatbot_response(self, response):
         self.chat_display.append(f"AI Receptionist: {response}")
@@ -73,6 +79,10 @@ class ChatbotWidget(QWidget):
     def start_listening(self):
         self.stt_engine.start()
 
-    def speak(self, text):
-        self.tts_engine = TTSThread(text)
+    def speak(self, text, lang="en"):
+        if self.tts_engine:
+            self.tts_engine.quit()  # Stop any previous thread
+            self.tts_engine.wait()
+
+        self.tts_engine = TTSThread(text, lang)
         self.tts_engine.start()

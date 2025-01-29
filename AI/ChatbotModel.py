@@ -1,82 +1,139 @@
-import nltk
 import json
-import random
 import os
+import random
+import logging
+import difflib
+import time
 from datetime import datetime
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 from fuzzywuzzy import fuzz
+from langdetect import detect
 
-nltk.download('punkt')
-nltk.download('stopwords')
+# Setup logging
+logging.basicConfig(filename="AI/Data/chatbot.log", level=logging.INFO, format="%(asctime)s - %(message)s")
 
 class Chatbot:
-    def __init__(self, intent_file='AI/intent.json', context_file='AI/context.json'):
+    def __init__(self, intent_file="AI/Data/intent.json", context_file="AI/Data/context.json"):
         self.intent_file = intent_file
         self.context_file = context_file
-        self.data = self.load_intents()
-        self.context = self.load_context()
-        self.stop_words = set(stopwords.words('english'))
-        self.time_greetings = {"morning": (5, 12), "afternoon": (12, 17), "evening": (17, 21)}
+        self.data = self.load_json(intent_file)
+        self.context = self.load_json(context_file, default_data={"logs": []})
+        
+        self.stop_words = set(stopwords.words("english"))
+        self.lemmatizer = WordNetLemmatizer()
+        self.last_input_time = time.time()
+        self.user_name = None  # Store the user's name
 
-    def load_intents(self):
+        # Train TF-IDF model
+        self.vectorizer = TfidfVectorizer()
+        self.intent_patterns = [self.preprocess_text(pattern) for intent in self.data.get("intents", []) for pattern in intent["patterns"]]
+        self.X = self.vectorizer.fit_transform(self.intent_patterns)
+
+    def load_json(self, filename, default_data=None):
+        if not os.path.exists(filename):
+            print(f"Warning: {filename} not found. Creating a new one.")
+            with open(filename, "w", encoding="utf-8") as file:
+                json.dump(default_data, file, indent=4)
         try:
-            with open(self.intent_file) as file:
+            with open(filename, encoding="utf-8") as file:
                 return json.load(file)
         except (FileNotFoundError, json.JSONDecodeError):
-            return {"intents": []}
+            print(f"Warning: {filename} is corrupted. Resetting to default.")
+            with open(filename, "w", encoding="utf-8") as file:
+                json.dump(default_data, file, indent=4)
+            return default_data
 
-    def load_context(self):
-        if os.path.exists(self.context_file):
-            with open(self.context_file, 'r') as file:
-                return json.load(file)
-        return {"user_name": "", "last_intent": "", "previous_query": ""}
+    def save_json(self, filename, data):
+        with open(filename, "w", encoding="utf-8") as file:
+            json.dump(data, file, indent=4)
 
-    def save_context(self):
-        with open(self.context_file, 'w') as file:
-            json.dump(self.context, file)
+    def preprocess_text(self, text):
+        words = word_tokenize(text.lower())
+        return " ".join([self.lemmatizer.lemmatize(word) for word in words if word.isalnum() and word not in self.stop_words])
 
-    def preprocess(self, text):
-        tokens = word_tokenize(text.lower())
-        return [word for word in tokens if word.isalnum() and word not in self.stop_words]
+    def get_intent(self, user_input, threshold=0.4):
+        user_vec = self.vectorizer.transform([user_input])
+        similarities = cosine_similarity(user_vec, self.X)[0]
+        
+        max_score = max(similarities, default=0)
+        if max_score < threshold:
+            return None, None, -1, max_score  
 
-    def get_time_based_greeting(self):
-        current_hour = datetime.now().hour
-        for part, (start, end) in self.time_greetings.items():
-            if start <= current_hour < end:
-                return part
-        return "day"
+        best_match_index = similarities.argmax()
+        matched_pattern = self.intent_patterns[best_match_index]
 
-    def get_intent(self, user_input, threshold=70):
-        max_score = 0
-        matched_intent = None
-        for intent in self.data['intents']:
-            for pattern in intent['patterns']:
-                score = fuzz.partial_ratio(user_input.lower(), pattern.lower())
-                if score > max_score:
-                    max_score = score
-                    matched_intent = intent
-        return matched_intent if max_score > threshold else None
+        matched_intent = next(
+            (intent for intent in self.data["intents"] if matched_pattern in [self.preprocess_text(p) for p in intent["patterns"]]), None
+        )
 
-    def handle_meeting_schedule(self, query):
-        for meeting, details in self.meetings.items():
-            if meeting in query.lower():
-                return f"The {meeting} is scheduled at {details}."
-        return "Please check the meeting name or contact the organizer for confirmation."
+        return matched_intent, matched_pattern, best_match_index, max_score
+
+    def ask_for_name(self):
+        if self.user_name is None:
+            self.user_name = input("Hello! What is your name? (Press Enter to skip): ").strip()
+            if not self.user_name:
+                self.user_name = "Anonymous"
+            print(f"Nice to meet you, {self.user_name}! How can I assist you today?")
+        return self.user_name
+
+    def log_interaction(self, user_input, response):
+        log_entry = {
+            "username": self.user_name,
+            "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "question": user_input,
+            "answer": response
+        }
+        self.context["logs"].append(log_entry)
+        self.save_json(self.context_file, self.context)
+
+    def handle_department_query(self, user_input):
+        office_intent = next((intent for intent in self.data["intents"] if intent["tag"] == "office_location"), None)
+        
+        if not office_intent or "hardcoded_locations" not in office_intent:
+            return "Sorry, I don't have location data available."
+        
+        locations = office_intent["hardcoded_locations"]
+        best_match = max(locations.keys(), key=lambda loc: fuzz.partial_ratio(user_input.lower(), loc.lower()))
+        
+        if fuzz.partial_ratio(user_input.lower(), best_match.lower()) > 80:
+            return f"The {best_match} department is located at {locations[best_match]}"
+        
+        return "Sorry, I couldn't find that department."
 
     def get_response(self, user_input):
+        self.ask_for_name()
+        
         user_input = user_input.strip().lower()
         if not user_input:
             return "I'm sorry, I didn't catch that. Could you say it again?"
-        intent = self.get_intent(user_input)
+
+        processed_input = self.preprocess_text(user_input)
+        intent, pattern, pattern_index, similarity_score = self.get_intent(processed_input)
+
         if intent:
-            if intent['tag'] == 'meeting_schedule':
-                return self.handle_meeting_schedule(user_input)
-            if 'context' in intent:
-                self.context['last_intent'] = intent['tag']
-                self.context['previous_query'] = user_input
-            if intent['tag'] == 'greeting':
-                time_part = self.get_time_based_greeting()
-                return random.choice(intent['responses']).replace("[morning/afternoon/evening]", time_part)
-            return random.choice(intent['responses'])
+            if intent["tag"] == "office_location":
+                response = self.handle_department_query(user_input)
+            else:
+                response = random.choice(intent["responses"])
+
+            self.log_interaction(user_input, response)
+
+            if intent["tag"] == "goodbye":
+                print("Ending session as 'goodbye' was detected.")
+                return response
+
+            self.last_input_time = time.time()
+            return response
+
         return "I'm sorry, I didn't understand. Could you rephrase?"
+
+    def auto_end_session(self):
+        while True:
+            if time.time() - self.last_input_time > 3:
+                print("No response received. Ending session.")
+                break
+            time.sleep(1)

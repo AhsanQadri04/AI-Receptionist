@@ -1,0 +1,14 @@
+2025-01-29 11:35:28,613 - User: Hellpo Goodmorning | Intent: Unknown | Score: 0.00 | Bot: Can you give me more details?
+2025-01-29 11:35:42,953 - User: Good Morning | Intent: greeting_normal | Score: 1.00 | Bot: Yo! What's on your mind?
+2025-01-29 11:35:52,269 - User: Cafeteria | Intent: office_location | Score: 1.00 | Bot: The operations department is located in Building C, 2nd floor.
+2025-01-29 11:40:31,890 - User: good morning | Intent: greeting_normal | Score: 1.00 | Bot: Welcome! Please let me know how I can serve you.
+2025-01-29 11:40:48,864 - User: thank | Intent: thanks | Score: 1.00 | Bot: It's my pleasure!
+2025-01-29 11:43:01,724 - User: hello good morning | Intent: greeting_normal | Score: 0.88 | Bot: Hi! I'm here to assist with anything you need.
+2025-01-29 11:43:08,462 - User: \u06c1\u0627\u0626\u06d2 | Intent: Unknown | Score: 0.00 | Bot: Sorry, I don't have an answer for that.
+2025-01-29 11:43:25,850 - User: thank | Intent: thanks | Score: 1.00 | Bot: Always here to help!
+2025-01-29 11:43:37,454 - User: finance department | Intent: office_location | Score: 0.53 | Bot: The finance department is located on the 2nd floor.
+2025-01-29 11:43:57,302 - User: goodbye | Intent: goodbye | Score: 1.00 | Bot: Farewell! Hope to see you soon.
+2025-01-29 11:44:13,637 - User: Assalam Walekum | Intent: Unknown | Score: 0.00 | Bot: Can you give me more details?
+2025-01-29 11:44:23,903 - User: Salam | Intent: Unknown | Score: 0.00 | Bot: Sorry, I don't have an answer for that.
+2025-01-29 11:44:34,692 - User: Salem | Intent: Unknown | Score: 0.00 | Bot: Sorry, I don't have an answer for that.
+2025-01-29 11:48:21,159 - User: Himesh Ahsan | Intent: Unknown | Score: 0.00 | Bot: I'm not sure I understand. Could you rephrase?
