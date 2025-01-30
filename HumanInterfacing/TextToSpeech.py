@@ -1,7 +1,10 @@
 import os
 import pygame
-from gtts import gTTS
+import regex as re
+
 from PyQt6.QtCore import pyqtSignal, QThread
+from gtts import gTTS
+from langdetect import detect
 
 class TTSThread(QThread):
     finished_signal = pyqtSignal()
@@ -17,24 +20,19 @@ class TTSThread(QThread):
         try:
             output_path = os.path.join(self.response_dir, "response.mp3")
 
-            # Stop and uninitialize pygame if already running
             pygame.mixer.quit()  
             pygame.mixer.init()
 
-            # Delete previous response file if it exists
             if os.path.exists(output_path):
                 os.remove(output_path)
 
-            # Generate speech using gTTS
             tts = gTTS(text=self.text, lang=self.lang, slow=False)
             tts.save(output_path)
 
-            # Reload and play the generated speech
             pygame.mixer.init()
             pygame.mixer.music.load(output_path)
             pygame.mixer.music.play()
 
-            # Wait for the audio to finish playing
             while pygame.mixer.music.get_busy():
                 pygame.time.delay(100)  # Prevent infinite loop freeze
 
@@ -43,6 +41,24 @@ class TTSThread(QThread):
         except Exception as e:
             print(f"Error in text-to-speech: {e}")
 
-    def speak(self, text, lang="en"):
-        self.tts_thread = TTSThread(text, lang)
-        self.tts_thread.start()
+    def detect_urdu(text):
+        urdu_pattern = re.compile(r'[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]')  # ✅ Unicode range for Urdu script
+        return bool(urdu_pattern.search(text))
+
+    def speak(text):
+        try:
+            lang = detect(text)  
+            tts_lang = "ur" if lang == "ur" else "en"
+
+            tts = gTTS(text=text, lang=tts_lang)
+            tts.save("response.mp3")
+
+            pygame.mixer.init()
+            pygame.mixer.music.load("response.mp3")
+            pygame.mixer.music.play()
+            
+            while pygame.mixer.music.get_busy():
+                continue
+            
+        except Exception as e:
+            print(f"❌ Error in Text-to-Speech: {e}")

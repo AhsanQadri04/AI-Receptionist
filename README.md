@@ -1,76 +1,58 @@
-# 🧠 AI Receptionist System for Technology Park
+# 🧠 AI Receptionist System for Technology Park  
 
-The **AI Receptionist System** is an intelligent virtual assistant designed specifically for technology parks. It streamlines navigation, manages meetings, and enhances visitor experiences with its advanced features, ensuring seamless interactions for all users.
-
----
-
-## 🚀 Features
-
-### 🌐 Facility Navigation  
-- Guides visitors to various **offices**, **cafeterias**, and other locations within the technology park.  
-- Provides clear directions to ensure efficient navigation.  
-
-### 🛠 Lost and Found Management  
-- Keeps track of **lost and found items**.  
-- Helps users register lost items or search for recovered ones easily.  
-
-### 📅 Meeting Management  
-- Organizes and accommodates meetings between **park offices** and **external visitors**.  
-- Maintains a centralized system for scheduling and coordination.  
-
-### 📸 Facial Record Keeping  
-- Captures and stores **photos of visitors** for future reference.  
-- Maintains a secure database of visitor records for efficient tracking.  
-
-### 🗣️ Speech-to-Text (STT) and Text-to-Speech (TTS)  
-- **Voice interaction** for enhanced accessibility and ease of use.  
-- Converts speech to text for chatbot queries and responses.  
-- Reads responses aloud for users with text-to-speech functionality.  
-
-### 🤖 Interactive Chatbot  
-- **Natural Language Processing (NLP)** enables the chatbot to understand and respond to user queries.  
-- Provides an intuitive and conversational interface for user interaction.  
+The **AI Receptionist System** is an advanced virtual assistant designed to enhance visitor experiences within a technology park. It provides seamless navigation assistance, automated interactions, and real-time responses to queries, ensuring an efficient and welcoming environment.  
 
 ---
 
-## 🛠️ Built With  
+## 🚀 Features  
 
-### Frontend  
-- **PyQt6**: Provides an elegant and responsive GUI.  
+### 🌐 Intelligent Facility Navigation  
+- Provides accurate directions to various **departments**, **offices**, and **facilities**.  
+- Uses **speech recognition** to understand visitor inquiries.  
+- Integrates with **computer vision** to log visitor details using facial recognition.  
 
-### Camera Functionality  
-- **OpenCV**: Powers the facial recognition and photo capture system.  
+### 🎙️ Advanced Speech Recognition  
+- Supports both **Urdu** and **English** for effortless multilingual communication.  
+- Uses real-time **voice-to-text conversion** to process spoken queries.  
+- Detects spoken language automatically and translates **Urdu** into **English** for accurate responses.  
 
-### Speech-to-Text  
-- **Google Speech Recognition Library**: Handles STT for seamless voice input.  
+### 📸 Face-Based Logging  
+- Eliminates the need for manual name entry—logs interactions using captured face images.  
+- Ensures better visitor tracking and enhanced personalization without storing sensitive data.  
 
-### Text-to-Speech  
-- **pyttsx3**: Provides TTS for audio responses.  
+### 🔄 Developer Override & Reinforcement Learning  
+- Allows real-time correction of incorrect chatbot responses through a **developer override system**.  
+- Uses **reinforcement learning** to adapt and improve over time.  
+- Stores voice recognition corrections to avoid repeated errors.  
 
-### Chatbot Functionality  
-The intelligent chatbot leverages the following libraries:  
-- **nltk**: Tokenizes, processes, and analyzes text.  
-- **fuzzywuzzy**: Enables approximate string matching for better query understanding.  
+### 💬 Smart Conversational AI  
+- Processes text and voice-based inquiries using an **intent-driven approach**.  
+- Leverages **Natural Language Processing (NLP)** to provide intelligent responses.  
+- Responds to facility-related questions (e.g., **office locations**, **lost & found**, **working hours**).  
 
----
-
-## 🏗️ System Architecture  
-
-1. **Frontend (PyQt6)**: User-friendly GUI for interacting with the receptionist system.  
-2. **Chatbot (NLP)**: Processes queries and provides intelligent responses.  
-3. **Camera Module**: Captures and stores visitor images using OpenCV.  
-4. **Speech Integration**:  
-   - STT converts spoken queries into text.  
-   - TTS provides audio responses for a more interactive experience.  
-5. **Database**:  
-   - Stores visitor records and facial images securely.  
-   - Manages lost and found items and meeting schedules.  
+### 🏢 Office & Department Location Assistance  
+- Helps visitors find departments, conference rooms, and other important locations.  
+- Uses **hardcoded locations** for accurate office directions instead of guessing.  
 
 ---
 
-## 📦 Installation  
+## 📦 Tech Stack  
 
-1. Clone the repository:  
-   ```bash
-   git clone https://github.com/your-username/AI-Receptionist-System.git
-   cd AI-Receptionist-System
+| **Component**           | **Technology Used**             |  
+|--------------------------|----------------------------------|  
+| Programming Language     | Python 🐍                       |  
+| Speech-to-Text (STT)     | Google Speech Recognition 🎤    |  
+| Text-to-Speech (TTS)     | gTTS (Google Text-to-Speech) 🔊 |  
+| Machine Learning & NLP   | Scikit-learn, NLTK 📖           |  
+| Face Detection           | OpenCV (Haarcascades) 📸        |  
+| Data Storage             | JSON (intent-based) 🗂          |  
+| GUI Framework            | PyQt6 🖥                        |  
+| Translation Module       | Google Translate API 🌍         |  
+
+
+## 🛠 Installation & Setup  
+
+### 🔹 Step 1: Clone the Repository  
+```bash  
+git clone https://github.com/your-repo/ai-receptionist.git  
+cd ai-receptionist  

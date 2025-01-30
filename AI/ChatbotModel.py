@@ -1,12 +1,22 @@
-import random
+# GENERAL IMPORTS
 import time
+import os
 import logging
+
+# SPECIFIC IMPORTS
 from datetime import datetime
+from sklearn.feature_extraction.text import TfidfVectorizer
+from AI.developer_override import developer_override
+from CameraModule.camera import Camera
+
+# MODULE IMPORTS
 from AI.Modules.JsonProcessing import load_json, save_json
 from AI.Modules.textProcessing import preprocess_text, get_intent
 from AI.Modules.queryHandler import handle_department_query
 from AI.Modules.learningModule import reinforce_learning
-from sklearn.feature_extraction.text import TfidfVectorizer
+from AI.Modules.Translation import MachineTranslation
+
+DEBUG_MODE = os.getenv("DEBUG_MODE", "False").lower() == "false" 
 
 # Setup logging
 logging.basicConfig(filename="AI/Data/chatbot.log", level=logging.INFO, format="%(asctime)s - %(message)s")
@@ -19,38 +29,53 @@ class Chatbot:
         self.context = load_json(context_file, default_data={"logs": []})
         self.last_input_time = time.time()
         self.user_name = None
+        self.camera = Camera()
+        self.translator = MachineTranslation()
 
         # Train TF-IDF model
         self.vectorizer = TfidfVectorizer()
         self.intent_patterns = [preprocess_text(pattern) for intent in self.data["intents"] for pattern in intent["patterns"]]
         self.X = self.vectorizer.fit_transform(self.intent_patterns)
 
-    def ask_for_name(self):
-        if self.user_name is None:
-            self.user_name = input("Hello! What is your name? (Press Enter to skip): ").strip()
-            if not self.user_name:
-                self.user_name = "Anonymous"
-            print(f"Nice to meet you, {self.user_name}! How can I assist you today?")
+    def capture_face(self):
+        _, frame = self.camera.get_frame()
+        if frame is not None:
+            image_path = self.camera.capture_image(frame)
+            self.camera.release()
+            return image_path
+        return None  # No face detected
 
-    def get_response(self, user_input):
-        self.ask_for_name()
-        user_input = preprocess_text(user_input)
-        intent, _, _, _ = get_intent(user_input, self.vectorizer, self.X, self.data)
+    def get_response(self, user_input, detected_lang):
+        if detected_lang == "ur":
+            user_input = self.translator.translate_to_english(user_input)  # ✅ Now using MachineTranslation
+
+        processed_input = preprocess_text(user_input)
+        intent, _, _, _ = get_intent(processed_input, self.vectorizer, self.X, self.data)
+
+        response = "I'm sorry, I didn't understand. Could you rephrase?"  # Default fallback
 
         if intent:
-            response = handle_department_query(user_input, self.data) if intent["tag"] == "office_location" else random.choice(intent["responses"])
-        else:
-            response = "I'm sorry, I didn't understand. Could you rephrase?"
+            if intent["tag"] == "office_location":
+                response = handle_department_query(user_input, self.data, self.intent_file)
+            elif "responses" in intent and intent["responses"]:
+                response = intent["responses"][0]
 
-        self.log_interaction(user_input, response)
+        # UNCOMMENT WHEN DEBUGGING
+        if DEBUG_MODE:
+            response = developer_override(user_input, response, self.data, self.intent_file, self.context_file)
+
+
         return response
 
-    def log_interaction(self, user_input, response):
-        self.context["logs"].append({
-            "username": self.user_name,
+        
+    def log_interaction(self, user_input, response, face_path):
+        """Logs interactions with face image instead of username."""
+        log_entry = {
+            "face_image": face_path if face_path else "No Face Detected",
             "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             "question": user_input,
             "answer": response
-        })
+        }
+        self.context["logs"].append(log_entry)
         save_json(self.context_file, self.context)
         reinforce_learning(user_input, response, self.data, self.intent_file)

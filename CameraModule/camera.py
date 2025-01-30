@@ -52,6 +52,7 @@ class Camera:
         print(f"Image saved at: {image_path}")
 
         self.image_captured = True
+        return self.image_captured
 
     def release(self):
         self.cap.release()

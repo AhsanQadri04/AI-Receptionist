@@ -4,7 +4,7 @@ def reinforce_learning(user_input, response, data, intent_file):
     failure_phrases = ["I'm sorry", "I don't understand", "Can you rephrase?"]
 
     if any(phrase in response for phrase in failure_phrases):
-        # Ensure "unrecognized" category exists
+        
         unrecognized_intent = next((intent for intent in data["intents"] if intent["tag"] == "unrecognized"), None)
         
         if not unrecognized_intent:
