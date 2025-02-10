@@ -1,53 +1,28 @@
-{
+{ 
     "intents": [
         {
             "tag": "greeting",
             "patterns": [
-                "hi",
-                "hello",
-                "good morning",
-                "good afternoon",
-                "good evening",
-                "assalamu alaikum",
-                "peace be upon you",
-                "greetings",
-                "hello, how can I be assisted?",
-                "hello, may I seek assistance?",
-                "good day",
-                "hello, I need help",
-                "hello, is someone there?",
-                "as-salamu alaykum wa rahmatullahi wa barakatuh",
-                "salaam",
-                "hello, may I ask for help?",
-                "hello, may I request assistance?",
-                "may peace be upon you",
-                "as-salamu alaykum wa rahmatullahi",
-                "good morning, how can I get help?",
-                "good evening, may I seek assistance?",
-                "peace be upon you, how can you assist?",
-                "as-salamu alaykum, I need assistance",
-                "assalamu alaikum wa barakatuh"
-            ],
-            "responses": [
-                "Hello! How can I assist you today?",
-                "Welcome! How may I help you?",
-                "Good day! How can I be of service?",
-                "Wa alaykumu as-salam! How can I help you today?",
-                "Greetings! What assistance do you require?",
-                "Peace be upon you! Please let me know how I can help.",
-                "Welcome! How may I serve you today?",
-                "Good morning! How can I assist you?",
-                "Good afternoon! Let me know how I can help.",
-                "Wa alaykumu as-salam wa rahmatullahi wa barakatuh! How may I help?",
-                "Good evening! How can I support you?",
-                "I'm here to assist. How can I help you today?",
-                "Welcome! Please let me know how I can serve you.",
-                "Peace be upon you! How can I assist you in the best way?",
-                "Hello! Let me know what assistance you require.",
-                "Wa alaikumussalam! I'm here to help\u2014what do you need?",
-                "Please let me know how I may assist."
+              {"pattern": "hi", "response": "Hello! How can I assist you today?"},
+              {"pattern": "hello", "response": "Hello! How can I assist you today?"},
+              {"pattern": "good morning", "response": "Good morning! How can I assist you today?"},
+              {"pattern": "good afternoon", "response": "Good afternoon! How can I assist you today?"},
+              {"pattern": "good evening", "response": "Good evening! How can I assist you today?"},
+              {"pattern": "assalamu alaikum", "response": "Wa alaykumu as-salam! How can I help you today?"},
+              {"pattern": "peace be upon you", "response": "Wa alaykumu as-salam! How can I help you today?"},
+              {"pattern": "greetings", "response": "Hello! How can I assist you today?"},
+              {"pattern": "hello, how can I be assisted?", "response": "Hello! How can I assist you today?"},
+              {"pattern": "good day", "response": "Good day! How can I be of service?"},
+              {"pattern": "hello, I need help", "response": "Hello! How can I assist you today?"},
+              {"pattern": "hello, may I seek assistance?", "response": "Hello! How can I assist you today?"},
+              {"pattern": "as-salamu alaykum wa rahmatullahi wa barakatuh", "response": "Wa alaykumu as-salam wa rahmatullahi wa barakatuh! How can I help you today?"},
+              {"pattern": "salam", "response": "Wa alaykumu as-salam! How can I assist you today?"},
+              {"pattern": "hello, may I ask for help?", "response": "Hello! How can I assist you today?"},
+              {"pattern": "hello, may I request assistance?", "response": "Hello! How can I assist you today?"},
+              {"pattern": "may peace be upon you", "response": "Wa alaykumu as-salam! How can I assist you today?"},
+              {"pattern": "as-salamu alaykum wa rahmatullahi", "response": "Wa alaykumu as-salam wa rahmatullahi! How can I assist you today?"}
             ]
-        },
+          },
         {
             "tag": "services",
             "patterns": [
@@ -79,8 +54,7 @@
             "patterns": [
                 "how to contact you?",
                 "what's your phone number?",
-                "email address",
-                "where is the office?"
+                "email address"
             ],
             "responses": [
                 "You can reach us at (555) 123-4567 or office@company.com.",
@@ -165,7 +139,8 @@
                 "HR departmt location"
             ],
             "responses": [
-                "The HR office is located on the 3rd floor."
+                "The HR office is located on the 3rd floor.",
+                "the hr office is on 3rd floor"
             ]
         },
         {
@@ -174,7 +149,9 @@
                 "where is the simulation"
             ],
             "responses": [
-                "The Simulation Department is Located on the ground floor"
+                "The Simulation Department is Located on the ground floor",
+                "The Sim department is located on the ground floor",
+                "The Sim department is on ground floor"
             ]
         },
         {
@@ -194,6 +171,567 @@
             "responses": [
                 "There are 3 cafeteria's in the building, one on the first floor and 2 on the 3rd floor"
             ]
-        }
+        },
+        {
+            "tag": "developer_override",
+            "patterns": [
+                "where is the daraz office"
+            ],
+            "responses": [
+                "2 daraz offices are located in the premises of NASTAP, one is on the ground floor and the second one is on the 1st floor"
+            ]
+        },
+        {
+            "tag": "developer_override",
+            "patterns": [
+                "where is the keenu office"
+            ],
+            "responses": [
+                "Keenu office is located on the ground floor"
+            ]
+        },
+
+        {
+            "tag": "developer_override",
+            "patterns": [
+                "where is the prayer area"
+            ],
+            "responses": [
+                "The prayer area is located on the ground floor"
+            ]
+        },
+        {
+            "tag": "developer_override",
+            "patterns": [
+                "where is the washroom",
+                "where is the toilet",
+                "where is the restroom"
+            ],
+            "responses": [
+                "There are washrooms on every floor"
+            ]
+        },
+        {
+            "tag": "developer_override",
+            "patterns": [
+                "where is the elevator"
+            ],
+            "responses": [
+                "The elevator is located on the ground floor and it goes up to the 3rd floor"
+            ]
+        },
+        {
+            "tag": "developer_override",
+            "patterns": [
+                "where is the escalator"
+            ],
+            "responses": [
+                "The escalator is located on every floor and it goes up and down to every floor"
+            ]
+        },
+        {
+            "tag": "developer_override",
+            "patterns": [
+                "where is the stairs"
+            ],
+            "responses": [
+                "We have stairs for emergency situations and are located on every floor and it goes up and down to every floor"
+            ]
+        },
+        {
+            "tag": "developer_override",
+            "patterns": [
+                "where is the parking"
+            ],
+            "responses": [
+                "The parking is located on the ground floor and it is for the employees only"
+            ]
+        },
+        {
+            "tag": "developer_override",
+            "patterns": [
+                "where is the first aid room"
+            ],
+            "responses": [
+                "The first aid room is located on the ground floor"
+            ]
+        },
+        {
+            "tag": "developer_override",
+            "patterns": [
+                "where is the ATM"
+            ],
+            "responses": [
+                "The ATM is located on the ground floor"
+            ]
+        },
+        {
+            "tag": "developer_override",
+            "patterns": [
+                "where is the ability office"
+            ],
+            "responses": [
+                "The ability office is located on the ground floor"
+            ]
+        },
+        {
+            "tag": "developer_override",
+            "patterns": [
+                "where is the exa software office"
+            ],
+            "responses": [
+                "The exa software office is located on the ground floor"
+            ]
+        },
+        {
+            "tag": "developer_override",
+            "patterns": [
+                "where is the sim division"
+            ],
+            "responses": [
+                "The sim division is located on the ground floor"
+            ]
+        },
+        {
+            "tag": "developer_override",
+            "patterns": [
+                "where is the sim department"
+            ],
+            "responses": [
+                "The Sim department is located on the ground floor"
+            ]
+        },
+        {
+            "tag": "developer_override",
+            "patterns": [
+                "where is the sdh division"
+            ],
+            "responses": [
+                "The sdh division is located on the ground floor"
+            ]
+        },
+        {
+            "tag": "developer_override",
+            "patterns": [
+                "where is the dg office",
+                "dg office"
+            ],
+            "responses": [
+                "The DG office is located on the ground floor"
+            ]
+        },
+        {
+            "tag": "developer_override",
+            "patterns": [
+                "where is the security office"
+            ],
+            "responses": [
+                "The security office is located on the ground floor"
+            ]
+        },{
+            "tag": "nbp_it",
+            "patterns": [
+                "where is the NBP IT department",
+                "where is the NBP IT division",
+                "where is the NBP IT office",
+                "where is the National bank of Pakistan IT department",
+                "where is the National bank of Pakistan IT division",
+                "where is the National bank of Pakistan IT office"
+            ],
+            "responses": ["The NBP IT department is located on the first floor",
+                "The National Bank of Pakistan IT department is located on the first floor"]
+        },
+        {
+            "tag": "pibas",
+            "patterns": [
+                "where is the PIBAS office",
+                "where is the PIBAS division",
+                "where is the PIBAS department"
+            ],
+            "responses": ["The PIBAS office is located on the first floor"]
+        },
+        {
+            "tag": "al_baraka_bank",
+            "patterns": [
+                "where is Al Baraka Bank",
+                "where is the albaraka bank",
+                "where is the al baraka bank"
+            ],
+            "responses": ["The Al Baraka Bank is located on the first floor"]
+        },
+        {
+            "tag": "payfast",
+            "patterns": [
+                "where is the pay fast office",
+                "where is the payfast office",
+                "where is the PAY FAST division",
+                "where is the PAY FAST department"
+            ],
+            "responses": ["The PayFast office is located on the first floor"]
+        },
+        {
+            "tag": "tennex",
+            "patterns": [
+                "where is the TENNEX office",
+                "where is the TENNEX division",
+                "where is the TENNEX department"
+            ],
+            "responses": ["The TENNEX office is located on the first floor"]
+        },
+        {
+            "tag": "transvitti",
+            "patterns": [
+                "where is the Transvitti office",
+                "where is the trans vitti office",
+                "where is the Trans vitti division"
+            ],
+            "responses": ["The Transvitti office is located on the first floor"]
+        },
+        {
+            "tag": "axpert",
+            "patterns": [
+                "where is the axpert office",
+                "where is the axpert division",
+                "where is the axpert department"
+            ],
+            "responses": ["The Axpert office is located on the first floor"]
+        },
+        {
+            "tag": "inseyab",
+            "patterns": [
+                "where is the Inseyab office",
+                "where is the Inseyab division",
+                "where is the Inseyab department"
+            ],
+            "responses": ["The Inseyab office is located on the first floor"]
+        },
+        {
+            "tag": "finacute",
+            "patterns": [
+                "where is the finacute office",
+                "where is the finacute division",
+                "where is the finacute department"
+            ],
+            "responses": ["The Finacute office is located on the first floor"]
+        },
+        {
+            "tag": "cloud_data",
+            "patterns": [
+                "where is the cloud data office",
+                "where is the cloud data division",
+                "where is the cloud data department"
+            ],
+            "responses": ["The Cloud Data office is located on the first floor"]
+        },
+        {
+            "tag": "digital_gravity",
+            "patterns": [
+                "where is the digital gravity office",
+                "where is the digital gravity division",
+                "where is the digital gravity department"
+            ],
+            "responses": ["The Digital Gravity office is located on the first floor"]
+        },
+        {
+            "tag": "kiosk_office",
+            "patterns": ["where is the kiosk office"],
+            "responses": ["The kiosk office is located on the first floor"]
+        },
+        {
+            "tag": "mazik_office",
+            "patterns": [
+              "where is the Mazik office",
+              "where is the Mazik department",
+              "Mazik office location"
+            ],
+            "responses": [
+              "The Mazik office is located on the 2nd floor"
+            ]
+          },
+          {
+            "tag": "mera_sabaq_office",
+            "patterns": [
+              "where is the Mera Sabaq office",
+              "where is the Mera Sabaq department",
+              "Mera Sabaq office location"
+            ],
+            "responses": [
+              "The Mera Sabaq office is located on the 2nd floor"
+            ]
+          },
+          {
+            "tag": "shispare_office",
+            "patterns": [
+              "where is the Shispare office",
+              "where is the Shispare department",
+              "Shispare office location"
+            ],
+            "responses": [
+              "The Shispare office is located on the 2nd floor"
+            ]
+          },
+          {
+            "tag": "mtbc_office",
+            "patterns": [
+              "where is the MTBC office",
+              "where is the MTBC department",
+              "MTBC office location"
+            ],
+            "responses": [
+              "The MTBC office is located on the 2nd floor"
+            ]
+          },
+          {
+            "tag": "oas_office",
+            "patterns": [
+              "where is the OAS office",
+              "where is the OAS department",
+              "OAS office location"
+            ],
+            "responses": [
+              "The OAS office is located on the 2nd floor"
+            ]
+          },
+          {
+            "tag": "secure_beans_office",
+            "patterns": [
+              "where is the Secure Beans office",
+              "where is the Secure Beans department",
+              "Secure Beans office location"
+            ],
+            "responses": [
+              "The Secure Beans office is located on the 2nd floor"
+            ]
+          },
+          {
+            "tag": "dynasys_office",
+            "patterns": [
+              "where is the Dynasys office",
+              "where is the Dynasys department",
+              "Dynasys office location"
+            ],
+            "responses": [
+              "The Dynasys office is located on the 2nd floor"
+            ]
+          },
+          {
+            "tag": "woot_tech_office",
+            "patterns": [
+              "where is the Woot Tech office",
+              "where is the Woot Tech department",
+              "Woot Tech office location"
+            ],
+            "responses": [
+              "The Woot Tech office is located on the 2nd floor"
+            ]
+          },
+          {
+            "tag": "evolve_office",
+            "patterns": [
+              "where is the Evolve office",
+              "where is the Evolve department",
+              "Evolve office location"
+            ],
+            "responses": [
+              "The Evolve office is located on the 2nd floor"
+            ]
+          },
+          {
+            "tag": "petrol_solution_office",
+            "patterns": [
+              "where is the Petrol Solution office",
+              "where is the Petrol Solution department",
+              "Petrol Solution office location"
+            ],
+            "responses": [
+              "The Petrol Solution office is located on the 2nd floor"
+            ]
+          },
+          {
+            "tag": "stryvve_office",
+            "patterns": [
+              "where is the Stryvve office",
+              "where is the Stryvve department",
+              "Stryvve office location"
+            ],
+            "responses": [
+              "The Stryvve office is located on the 2nd floor"
+            ]
+          },
+          {
+            "tag": "sew_office",
+            "patterns": [
+              "where is the SEW office",
+              "where is the SEW department",
+              "SEW office location"
+            ],
+            "responses": [
+              "The SEW office is located on the 2nd floor"
+            ]
+          },
+          {
+            "tag": "aurra_engg_office",
+            "patterns": [
+              "where is the Aurra Engg office",
+              "where is the Aurra Engg department",
+              "Aurra Engg office location"
+            ],
+            "responses": [
+              "The Aurra Engg office is located on the 2nd floor"
+            ]
+          },
+          {
+            "tag": "ashritech_office",
+            "patterns": [
+              "where is the Ashritech office",
+              "where is the Ashritech department",
+              "Ashritech office location"
+            ],
+            "responses": [
+              "The Ashritech office is located on the 2nd floor"
+            ]
+          },
+          {
+            "tag": "female_prayer_area_office",
+            "patterns": [
+              "where is the Female Prayer Area",
+              "Female Prayer Area location",
+              "location of Female Prayer Area"
+            ],
+            "responses": [
+              "The Female Prayer Area is located on the 2nd floor"
+            ]
+          },
+          {
+            "tag": "asani_io_office",
+            "patterns": [
+              "where is the Asani.io office",
+              "where is the Asani.io department",
+              "Asani.io office location"
+            ],
+            "responses": [
+              "The Asani.io office is located on the 2nd floor"
+            ]
+          },
+          {
+            "tag": "sales_flo_office",
+            "patterns": [
+              "where is the Sales Flo office",
+              "where is the Sales Flo department",
+              "Sales Flo office location"
+            ],
+            "responses": [
+              "The Sales Flo office is located on the 2nd floor"
+            ]
+          },
+          {
+            "tag": "stingray_office",
+            "patterns": [
+              "where is the Stingray office",
+              "where is the Stingray department",
+              "Stingray office location"
+            ],
+            "responses": [
+              "The Stingray office is located on the 2nd floor"
+            ]
+          },
+          {
+            "tag": "pseb_office",
+            "patterns": [
+              "where is the PSEB office",
+              "where is the PSEB department",
+              "PSEB office location"
+            ],
+            "responses": [
+              "The PSEB office is located on the 2nd floor"
+            ]
+          },
+          {
+            "tag": "vals_office",
+            "patterns": [
+              "where is the Vals office",
+              "where is the Vals department",
+              "Vals office location"
+            ],
+            "responses": [
+              "The Vals office is located on the 2nd floor"
+            ]
+          },
+          {
+            "tag": "emerging_office",
+            "patterns": [
+              "where is the Emerging office",
+              "where is the Emerging department",
+              "Emerging office location"
+            ],
+            "responses": [
+              "The Emerging office is located on the 2nd floor"
+            ]
+          },
+          {
+            "tag": "cpa_office",
+            "patterns": [
+              "where is the CPA office",
+              "where is the CPA department",
+              "CPA office location"
+            ],
+            "responses": [
+              "The CPA office is located on the 2nd floor"
+            ]
+          },
+          {
+            "tag": "telec_office",
+            "patterns": [
+              "where is the Telec office",
+              "where is the Telec department",
+              "Telec office location"
+            ],
+            "responses": [
+              "The Telec office is located on the 2nd floor"
+            ]
+          },
+          {
+            "tag": "digisoft_office",
+            "patterns": [
+              "where is the Digisoft office",
+              "where is the Digisoft department",
+              "Digisoft office location"
+            ],
+            "responses": [
+              "The Digisoft office is located on the 2nd floor"
+            ]
+          },
+          {
+            "tag": "arena_office",
+            "patterns": [
+              "where is the Arena"
+            ],
+            "responses": [
+              "The Arena is located on the 3rd floor"
+            ]
+          },
+          {
+            "tag": "10 pearls_office",
+            "patterns": [
+              "where is the 10 Pearls office",
+              "where is the 10 Pearls division",
+              "where is the 10 Pearls department"
+            ],
+            "responses": [
+              "The 10 Pearls office is located on the 3rd floor"
+            ]
+          },
+          {
+            "tag": "hive_office",
+            "patterns": [
+              "where is the Hive office",
+              "where is the Hive division",
+              "where is the Hive department"
+            ],
+            "responses": [
+              "The Hive office is located on the 3rd floor"
+            ]
+          }
+
     ]
 }
