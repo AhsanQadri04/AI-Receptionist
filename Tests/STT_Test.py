@@ -1,7 +1,10 @@
-from HumanInterfacing.SpeechToText import SpeechToText
+import sys
 import time
+from PyQt6.QtCore import QCoreApplication, QTimer
+from HumanInterfacing.SpeechToText import SpeechToText
 
 def test_speech_to_text():
+    app = QCoreApplication(sys.argv)
     stt = SpeechToText()
 
     def print_text_output(text):
@@ -10,8 +13,9 @@ def test_speech_to_text():
     stt.text_signal.connect(print_text_output)
     stt.start()
 
-    time.sleep(10)  # Allow testing for 10 seconds
-    stt.stop()  # Stop the thread properly before exiting
+    # Stop the STT thread after 10 seconds and quit the app.
+    QTimer.singleShot(10000, lambda: (stt.stop(), app.quit()))
+    app.exec()
     print("SpeechToText thread stopped.")
 
 if __name__ == "__main__":
