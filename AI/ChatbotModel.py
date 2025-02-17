@@ -13,15 +13,8 @@ from AI.Modules.textProcessing import preprocess_text, get_intent
 from AI.Modules.queryHandler import handle_department_query
 from AI.Modules.learningModule import reinforce_learning
 
-# Determine debug mode.
 DEBUG_MODE = os.getenv("DEBUG_MODE", "false").lower() == "true"
-
-# Setup logging
-logging.basicConfig(
-    filename="AI/Data/chatbot.log",
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s"
-)
+logging.basicConfig(filename="AI/Data/chatbot.log", level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 class Chatbot:
     def __init__(self, intent_file="AI/Data/intent.json", context_file="AI/Data/context.json"):
@@ -32,17 +25,13 @@ class Chatbot:
         self.last_input_time = time.time()
         self.user_name = None
         self.camera = Camera()
-
-        # Initialize spell checker for spelling corrections.
         self.spell = SpellChecker()
-
-        # Train TF-IDF model on preprocessed intent patterns.
         self.vectorizer = TfidfVectorizer()
         self.intent_patterns = [
-            preprocess_text(pattern)  # Ensure pattern is a string.
+            preprocess_text(pattern)
             for intent in self.data.get("intents", [])
             for pattern in intent.get("patterns", [])
-            if isinstance(pattern, str)  # Only process strings
+            if isinstance(pattern, str)
         ]
         if self.intent_patterns:
             self.X = self.vectorizer.fit_transform(self.intent_patterns)
@@ -62,44 +51,30 @@ class Chatbot:
     def fuzzy_match(self, user_input):
         best_match = None
         best_score = 0
-
-        # Iterate through all intents and their patterns
         for intent in self.data.get("intents", []):
             for pattern in intent.get("patterns", []):
                 score = process.extractOne(user_input, [pattern])[1]
                 if score > best_score:
                     best_score = score
                     best_match = intent
-
-        return best_match if best_score >= 80 else None  # Adjust threshold as needed
+        return best_match if best_score >= 80 else None
 
     def correct_spelling(self, text):
-        corrected_text = ' '.join([self.spell.correction(word) if self.spell.correction(word) else word for word in text.split()])
-        return corrected_text
+        return ' '.join([self.spell.correction(word) if self.spell.correction(word) else word for word in text.split()])
 
     def get_response(self, user_input, user_name=None):
-        # Correct spelling of the user input
         user_input = self.correct_spelling(user_input)
-
-        # Apply fuzzy matching to find the most relevant intent based on the input
-        intent = self.fuzzy_match(user_input)  # Fixed: pass user_input instead of intent
-
-        # Default fallback response
+        intent = self.fuzzy_match(user_input)
         response = "I'm sorry, I didn't understand. Could you rephrase?"
-
         if intent:
             if intent.get("tag") == "office_location":
                 response = handle_department_query(user_input, self.data, self.intent_file)
             elif intent.get("responses"):
                 response = intent["responses"][0]
-
-        # Apply developer override if debugging is enabled
         if DEBUG_MODE:
             response = developer_override(user_input, response, self.data, self.intent_file, self.context_file)
             logging.debug("Developer override applied to response.")
-
         return response
-
 
     def log_interaction(self, user_input, response, face_path):
         log_entry = {
@@ -114,10 +89,8 @@ class Chatbot:
         logging.info(f"Logged interaction: {log_entry}")
 
     def preprocess_text(text):
-        if isinstance(text, str):  # Ensure it's a string
-            # Tokenize the text and perform other preprocessing
+        if isinstance(text, str):
             words = word_tokenize(text.lower())
-            # Join the words back into a string if necessary
             return " ".join(words)
         else:
             return ""

@@ -4,52 +4,35 @@ from HumanInterfacing.SpeechToText import SpeechToText
 from HumanInterfacing.TextToSpeech import TTSThread
 from AI.ChatbotModel import Chatbot
 
-# Configure logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 class ChatbotWidget(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
-        
-        # Initialize the chatbot and multimedia engines.
         self.chatbot = Chatbot()
         self.tts_engine = None
-        
-        # Optionally cache the username to avoid repeated prompts.
         self.cached_username = None
-        
         self.stt_engine = SpeechToText()
         self.stt_engine.text_signal.connect(self.handle_voice_input)
         self.stt_engine.start()
-        
         self.initUI()
 
     def initUI(self):
-        # Create the main vertical layout.
         layout = QVBoxLayout(self)
-        
-        # Chat display: Read-only text edit.
         self.chat_display = QTextEdit()
         self.chat_display.setReadOnly(True)
         layout.addWidget(self.chat_display)
-        
-        # Input area: a horizontal layout with a QLineEdit and buttons.
         input_layout = QHBoxLayout()
         self.user_input = QLineEdit()
         self.user_input.setPlaceholderText("Type your message here...")
         input_layout.addWidget(self.user_input)
-        
         send_button = QPushButton("Send")
         send_button.clicked.connect(self.handle_user_input)
         input_layout.addWidget(send_button)
-        
         voice_button = QPushButton("🎤 Speak")
         voice_button.clicked.connect(self.start_listening)
         input_layout.addWidget(voice_button)
-        
         layout.addLayout(input_layout)
-        
-        # Apply a stylesheet if available.
         self.load_styles()
 
     def load_styles(self):
@@ -63,62 +46,33 @@ class ChatbotWidget(QWidget):
         user_message = self.user_input.text().strip()
         if not user_message:
             return
-        
-        # Retrieve or prompt for username only once.
         user_name = self.get_username()
-        
-        # Append user's message to the chat display.
         self.chat_display.append(f"{user_name}: {user_message}")
         self.user_input.clear()
-        
-        # Get chatbot response. Note: The second parameter here is used
-        # to provide context (user's name), which your Chatbot.get_response()
-        # method may use.
         response = self.chatbot.get_response(user_message, user_name)
         self.chat_display.append(f"AI Receptionist: {response}")
-        
         self.speak(response)
 
     def get_username(self):
-        # Cache the username after the first prompt.
         if self.cached_username:
             return self.cached_username
-        
         user_name, ok = QInputDialog.getText(self, "Username", "Enter your name (optional):")
         self.cached_username = user_name.strip() if ok and user_name else "Anonymous"
         return self.cached_username
 
     def handle_voice_input(self, recognized_text):
-        """
-        Called whenever the STT engine has recognized text from the microphone.
-        We treat this text as the user's input, pass it to the chatbot, and
-        display the chatbot's response.
-        """
-        # 1) Display the user’s recognized text
         self.chat_display.append(f"User (Voice): {recognized_text}")
-
-        # 2) Get the username if needed
         user_name = self.get_username()
-
-        # 3) Pass recognized text to the chatbot
         chatbot_response = self.chatbot.get_response(recognized_text, user_name)
-
-        # 4) Display the chatbot’s response
         self.chat_display.append(f"AI Receptionist: {chatbot_response}")
-
-        # 5) Speak the chatbot’s response
         self.speak(chatbot_response)
 
     def start_listening(self):
-        # Restart the speech-to-text engine when the voice button is clicked.
         self.stt_engine.start()
 
     def speak(self, text, lang="en"):
-        # If a previous TTS thread is running, quit it and wait for it to finish.
         if self.tts_engine:
             self.tts_engine.quit()
             self.tts_engine.wait()
-        
-        # Create and start a new text-to-speech thread.
         self.tts_engine = TTSThread(text, lang)
         self.tts_engine.start()
