@@ -19,7 +19,7 @@ class ChatbotWidget(QWidget):
         self.cached_username = None
         
         self.stt_engine = SpeechToText()
-        self.stt_engine.text_signal.connect(self.handle_chatbot_response)
+        self.stt_engine.text_signal.connect(self.handle_voice_input)
         self.stt_engine.start()
         
         self.initUI()
@@ -88,10 +88,26 @@ class ChatbotWidget(QWidget):
         self.cached_username = user_name.strip() if ok and user_name else "Anonymous"
         return self.cached_username
 
-    def handle_chatbot_response(self, response):
-        # This slot is connected to the STT engine's text_signal.
-        self.chat_display.append(f"AI Receptionist: {response}")
-        self.speak(response)
+    def handle_voice_input(self, recognized_text):
+        """
+        Called whenever the STT engine has recognized text from the microphone.
+        We treat this text as the user's input, pass it to the chatbot, and
+        display the chatbot's response.
+        """
+        # 1) Display the user’s recognized text
+        self.chat_display.append(f"User (Voice): {recognized_text}")
+
+        # 2) Get the username if needed
+        user_name = self.get_username()
+
+        # 3) Pass recognized text to the chatbot
+        chatbot_response = self.chatbot.get_response(recognized_text, user_name)
+
+        # 4) Display the chatbot’s response
+        self.chat_display.append(f"AI Receptionist: {chatbot_response}")
+
+        # 5) Speak the chatbot’s response
+        self.speak(chatbot_response)
 
     def start_listening(self):
         # Restart the speech-to-text engine when the voice button is clicked.

@@ -2,26 +2,6 @@ from AI.Modules.JsonProcessing import save_json, load_json
 import logging
 
 def developer_override(user_input, response, data, intent_file, context_file="AI/Data/context.json"):
-    """
-    Allows the developer to override the chatbot's response if it's incorrect.
-
-    This function loads a context file that stores previous developer overrides.
-    If an override for the given user_input exists, it is used directly. Otherwise,
-    the developer is prompted to confirm or provide an override. If an override is
-    provided and voice recognition is determined to be correct (i.e. the error is in
-    the response generation, not in the recognition), the corresponding intent's response
-    is updated. The updated data is then saved to the context and intent files.
-
-    Args:
-        user_input (str): The user's input.
-        response (str): The chatbot's original response.
-        data (dict): The current intent data (with intents, patterns, and responses).
-        intent_file (str): Path to the JSON file storing intent data.
-        context_file (str): Path to the JSON file storing override context (default "AI/Data/context.json").
-
-    Returns:
-        str: The final response, either the original or the developer-corrected version.
-    """
     # Load context and ensure the "overrides" key exists.
     context = load_json(context_file, default_data={})
     context.setdefault("overrides", {})
