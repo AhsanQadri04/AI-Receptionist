@@ -1,20 +1,23 @@
 import logging
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QTextEdit, QLineEdit, QPushButton, QInputDialog
 from HumanInterfacing.SpeechToText import SpeechToText
+from RAG.RAGModel import RAGModel
 from HumanInterfacing.TextToSpeech import TTSThread
-from AI.ChatbotModel import Chatbot
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 class ChatbotWidget(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.chatbot = Chatbot()
-        self.tts_engine = None
-        self.cached_username = None
+        self.rag_model = RAGModel(
+            csv_file="AI/Data/extra.csv",
+            faiss_index_file="RAG/faiss_index.bin"
+        )
+        self.rag_model.response_signal.connect(self.display_response)
         self.stt_engine = SpeechToText()
         self.stt_engine.text_signal.connect(self.handle_voice_input)
         self.stt_engine.start()
+        self.tts_thread = None
         self.initUI()
 
     def initUI(self):
@@ -49,12 +52,10 @@ class ChatbotWidget(QWidget):
         user_name = self.get_username()
         self.chat_display.append(f"{user_name}: {user_message}")
         self.user_input.clear()
-        response = self.chatbot.get_response(user_message, user_name)
-        self.chat_display.append(f"AI Receptionist: {response}")
-        self.speak(response)
+        self.rag_model.handle_question(user_message)
 
     def get_username(self):
-        if self.cached_username:
+        if hasattr(self, 'cached_username') and self.cached_username:
             return self.cached_username
         user_name, ok = QInputDialog.getText(self, "Username", "Enter your name (optional):")
         self.cached_username = user_name.strip() if ok and user_name else "Anonymous"
@@ -63,16 +64,18 @@ class ChatbotWidget(QWidget):
     def handle_voice_input(self, recognized_text):
         self.chat_display.append(f"User (Voice): {recognized_text}")
         user_name = self.get_username()
-        chatbot_response = self.chatbot.get_response(recognized_text, user_name)
-        self.chat_display.append(f"AI Receptionist: {chatbot_response}")
-        self.speak(chatbot_response)
+        self.rag_model.handle_question(recognized_text)
 
     def start_listening(self):
         self.stt_engine.start()
 
-    def speak(self, text, lang="en"):
-        if self.tts_engine:
-            self.tts_engine.quit()
-            self.tts_engine.wait()
-        self.tts_engine = TTSThread(text, lang)
-        self.tts_engine.start()
+    def display_response(self, response):
+        self.chat_display.append(f"AI Receptionist: {response}")
+        self.speak_response(response)
+
+    def speak_response(self, response):
+        if self.tts_thread and self.tts_thread.isRunning():
+            self.tts_thread.quit()
+            self.tts_thread.wait()
+        self.tts_thread = TTSThread(response)
+        self.tts_thread.start()

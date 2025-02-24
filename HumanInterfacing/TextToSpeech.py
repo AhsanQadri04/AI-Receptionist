@@ -1,11 +1,9 @@
 import os
 import pygame
-import regex as re
 import logging
 import time
 from PyQt6.QtCore import pyqtSignal, QThread
-from gtts import gTTS
-from langdetect import detect
+from gtts import gTTS  # Import gTTS module
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
@@ -52,19 +50,12 @@ class TTSThread(QThread):
             time.sleep(0.1)
 
     @staticmethod
-    def detect_urdu(text):
-        urdu_pattern = re.compile(r'[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]')
-        return bool(urdu_pattern.search(text))
-
-    @staticmethod
     def speak(text):
         try:
-            lang_detected = detect(text)
-            tts_lang = "ur" if lang_detected == "ur" else "en"
             temp_path = "response.mp3"
-            tts = gTTS(text=text, lang=tts_lang)
+            tts = gTTS(text=text, lang="en")
             tts.save(temp_path)
-            logging.info("TTS saved to '%s' with language '%s'", temp_path, tts_lang)
+            logging.info("TTS saved to '%s' with language 'en'", temp_path)
             pygame.mixer.init()
             pygame.mixer.music.load(temp_path)
             pygame.mixer.music.play()
